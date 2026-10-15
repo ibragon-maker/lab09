@@ -1,24 +1,23 @@
 #include "pilot.h"
-
 #include <iostream>
 
-void rest(Pilot& pilot) {
-    pilot.fatigue -= 30;
-    if (pilot.fatigue < 0) {
-        pilot.fatigue = 0;
+void Pilot::rest() {
+    fatigue -= 30;
+    if (fatigue < 0) {
+        fatigue = 0;
     }
 }
 
-bool fly_mission(Pilot& pilot) {
-    if (pilot.fatigue > 80) {
+bool Pilot::fly_mission() {
+    if (fatigue > 80) {
         return false;
     }
-    pilot.fatigue += 20;
-    pilot.missions += 1;
+    fatigue += 20;
+    missions += 1;
     return true;
 }
 
-void print_pilot(const Pilot& pilot) {
-    std::cout << pilot.name << " | skill " << pilot.skill << " | fatigue "
-              << pilot.fatigue << " | missions " << pilot.missions << '\n';
+void Pilot::print() const {
+    std::cout << name << " | skill " << skill << " | fatigue "
+              << fatigue << " | missions " << missions << '\n';
 }
